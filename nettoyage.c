@@ -1,6 +1,6 @@
 #include"Projet.h"
 
-const char* espece_to_string(Espece race) {
+const char* race_espece(Espece race) {
     switch (race) {
         case VARACTYL: return "VARACTYL";
         case ZILLO_BEAST: return "ZILLO_BEAST";
@@ -16,7 +16,7 @@ void nettoyage() { //TD08/Ex fichier/Ex tableau
 
     FILE * cavalier=fopen("../Nettoyage/Cavalier.txt", "r");
         if (cavalier==NULL) {
-            printf("Erreur: %d\n", errno);
+            printf("Erreur nettoyage: %d\n", errno);
             printf("Message d'erreur: %s\n", strerror(errno));
             exit(21);
         }
@@ -31,11 +31,12 @@ void nettoyage() { //TD08/Ex fichier/Ex tableau
     fclose(cavalier);
 
     sleep(3);
+    system("cls"); //linux
 
 
     FILE* fichier = fopen("../Nettoyage/donnees.txt", "r");
     if (fichier == NULL) {
-        printf("Erreur: %d\n", errno);
+        printf("Erreur nettoyage: %d\n", errno);
         printf("Message d'erreur: %s\n", strerror(errno));
         exit(10);
     }
@@ -48,14 +49,16 @@ void nettoyage() { //TD08/Ex fichier/Ex tableau
     }
 
     fclose(fichier);
-
+    printf("\n\n");
     for (int i = 0; i < 6; i++) {
         printf("\n***\n");
         printf("Jour: %s\n", tab[i].jour);
-        printf("Espece: %s\n", espece_to_string(tab[i].race));
+        printf("Espece: %s\n", race_espece(tab[i].race));
         printf("Temps en minutes: %d\n", tab[i].temps);
         printf("Commentaire: %s\n", tab[i].comment);
         printf("***\n");
     }
 
 }
+
+

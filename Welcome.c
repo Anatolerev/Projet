@@ -4,7 +4,7 @@ int welcome() {
     FILE * fichier=fopen("../Dessin/medical droid.txt", "r"); //Lis le texte
 
     if(fichier==NULL){
-        printf("ERREUR: %d\n", errno);
+        printf("ERREUR welcome: %d\n", errno);
         printf("Message d'erreur: %s\n", strerror(errno));
         exit(11);
     }
@@ -33,7 +33,7 @@ void bye() {
     FILE * fichier=fopen("../Dessin/bye.txt", "r");
 
     if(fichier==NULL){
-        printf("ERREUR: %d\n", errno);
+        printf("ERREUR bye: %d\n", errno);
         printf("Message d'erreur: %s\n", strerror(errno));
         exit(11);
     }

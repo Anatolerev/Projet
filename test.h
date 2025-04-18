@@ -23,6 +23,7 @@ typedef struct {
     int jour;
     int mois;
     int année;
+    int age;
 }Date;
 
 
@@ -30,9 +31,10 @@ typedef struct {
 
     int ID;
     char nom[100];
+    Espece race;
     Date bd;
     int poids;
-    char remarque[300];
+    char remarque[200];
 
 }Animal;
 
@@ -43,9 +45,3 @@ typedef struct {
     int temps;
     char comment[200];
 }Clean;
-
-
-int welcome();
-void bye();
-const char* race_espece(Espece race);
-void nettoyage();
