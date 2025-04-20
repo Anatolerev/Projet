@@ -34,7 +34,7 @@ typedef struct {
     Espece race;
     Date bd;
     int poids;
-    char remarque[200];
+    char remarque[300];
 
 }Animal;
 
@@ -45,3 +45,9 @@ typedef struct {
     int temps;
     char comment[200];
 }Clean;
+
+
+int welcome();
+void bye();
+const char* race_espece(Espece race);
+void nettoyage();
