@@ -4,6 +4,8 @@
 #include<errno.h>
 #include<time.h>
 #include<unistd.h>
+#include<ctype.h>
+
 
 
 
@@ -23,6 +25,7 @@ typedef struct {
     int jour;
     int mois;
     int année;
+    int age;
 }Date;
 
 
@@ -30,6 +33,7 @@ typedef struct {
 
     int ID;
     char nom[100];
+    Espece race;
     Date bd;
     int poids;
     char remarque[300];
@@ -49,3 +53,9 @@ int welcome();
 void bye();
 const char* race_espece(Espece race);
 void nettoyage();
+int *rechercher_nom(Animal *tab, int taille);
+int *rechercher_age(Animal *tab, int taille);
+int* rechercher_espece(Animal *tab, int taille);
+void compare_affiche( Animal *tab, int *tab_ID1, int *tab_ID2, int taille);
+void rechercher_animal();
+void afficher_recherche(int *search1, int *search2);
