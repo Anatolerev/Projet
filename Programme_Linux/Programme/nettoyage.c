@@ -1,5 +1,6 @@
 #include"Projet.h"
 
+////////////////////
 Temps convertion_temps(int t){
 
 
@@ -25,9 +26,13 @@ t1.minute=t;
 
 return t1;
 }
+////////////////////
 
 
 
+
+
+////////////////////
 const char* race_espece(Espece race) {
     switch (race) {
         case VARACTYL: return "VARACTYL";
@@ -39,7 +44,12 @@ const char* race_espece(Espece race) {
         default: return "INCONNU";
     }
 }
+////////////////////
 
+
+
+
+////////////////////
 Race_compte* compter_animaux_race() {
 
     Animal *tab=registre_tab(TAILLE);
@@ -100,9 +110,12 @@ Race_compte* compter_animaux_race() {
     }
     return tab2;
 }
+////////////////////
 
 
 
+
+////////////////////
 void nettoyage() {
     FILE * cavalier=fopen("../Nettoyage/Cavalier.txt", "r");
     if (cavalier==NULL) {
@@ -177,12 +190,19 @@ void nettoyage() {
 
     free(tab_count);
 }
+////////////////////
 
+
+
+////////////////////
 void echanger(Race_compte* a, Race_compte* b) {
     Race_compte temp = *a;
     *a = *b;
     *b = temp;
 }
+////////////////////
+
+////////////////////
 int partition(Race_compte tab[], int low, int high) {
     int pivot = tab[high].count;
     int i = low - 1;
@@ -195,7 +215,9 @@ int partition(Race_compte tab[], int low, int high) {
     echanger(&tab[i + 1], &tab[high]);
     return i + 1;
 }
+////////////////////
 
+////////////////////
 void quicksort(Race_compte tab[], int low, int high) {
     if (low < high) {
         int pi = partition(tab, low, high);
@@ -203,9 +225,12 @@ void quicksort(Race_compte tab[], int low, int high) {
         quicksort(tab, pi + 1, high);
     }
 }
+////////////////////
 
 
 
+
+////////////////////
 void afficher_registre() {
 
 
@@ -228,9 +253,9 @@ void afficher_registre() {
     fclose(doc);
         sleep(2);
 
+//fermeture bonjour
 
-
-    Animal* tab=registre_tab(TAILLE);
+    Animal* tab=registre_tab(TAILLE);//reçoit tableau contenant les données registres
     int tab_count[6]={0};
 
 
@@ -276,6 +301,7 @@ void afficher_registre() {
     };
 
     quicksort(tab_race, 0, 5);
+    
     printf("\n\n\nVoici les comptes:\n");
     for (int i = 0; i < 6; i++) {
         printf("%s : %d\n", tab_race[i].nom, tab_race[i].count);
@@ -286,7 +312,7 @@ void afficher_registre() {
 
     sleep(2);
 
-    int *tab_espece=rechercher_espece(tab, TAILLE);
+    int *tab_espece=rechercher_espece(tab, TAILLE);//renvoit un tableau composé de ID ou de -1
 
     for (int i=0; i<TAILLE; i++) {
         if (tab_espece[i]==-1) {
@@ -309,8 +335,11 @@ void afficher_registre() {
         }
     }
 }
+////////////////////
 
 
+
+////////////////////
 void ajouter_animal() {
     watto_bonjour();
     printf("\n\n____________________________\nAppuyer deux fois sur entrer\n\n");
@@ -436,4 +465,5 @@ fclose(doc);
     printf("Regsitre mis a jour avec succes\n");
 
 }
+////////////////////
 

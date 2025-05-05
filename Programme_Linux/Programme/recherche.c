@@ -1,6 +1,6 @@
 #include"Projet.h"
 
-
+////////////////////
 int *rechercher_nom(Animal *tab, int taille) {
 
     char nom[100]={0};
@@ -26,8 +26,13 @@ int *rechercher_nom(Animal *tab, int taille) {
     }
 return tab_ID;
 }
+////////////////////
 
 
+
+
+
+////////////////////
 int *rechercher_age(Animal *tab, int taille) {
 
     int age=-1;
@@ -81,8 +86,13 @@ int *rechercher_age(Animal *tab, int taille) {
 
 return tab_ID;
 }
+////////////////////
 
 
+
+
+
+////////////////////
 int* rechercher_espece(Animal *tab, int taille) {
     int *tab_ID=malloc((sizeof(int)*taille));
     if (tab_ID==NULL) {
@@ -141,10 +151,16 @@ int* rechercher_espece(Animal *tab, int taille) {
 
     return tab_ID;
 }
+////////////////////
 
+
+
+
+
+////////////////////
 void compare_affiche( Animal *tab, int *tab_ID1, int *tab_ID2, int taille) { //complexité o(n^3) mais petite valeur de taille
 
-    if (tab_ID1==NULL || tab_ID2==NULL) {
+    if (tab_ID1==NULL || tab_ID2==NULL || tab==NULL) {
         printf("ERREUR ALLOC' compare affiche");
         exit(7);
     }
@@ -171,11 +187,14 @@ void compare_affiche( Animal *tab, int *tab_ID1, int *tab_ID2, int taille) { //c
                 printf("\n***\n");
                 printf("L'animal %d correspond a votre recherche: \n", tab_ID1[i]);
                 count++;
+                
+                	
 
                     for (int k=0; k<taille; k++) {
 
                         if (tab[k].ID==tab_ID1[i]) {
-
+                        
+                        	
                             printf("ID:%d\nNom:%s\nEspece:%s\nDate de naissance:%d/%d/%d\nAge:%d\nPoids:%d\n", tab[k].ID, tab[k].nom, race_espece(tab[k].race), tab[k].bd.jour, tab[k].bd.mois, tab[k].bd.année, (3026-tab[k].bd.année), tab[k].poids);
 
                                 if (strlen(tab[k].remarque)>0) {
@@ -193,8 +212,13 @@ if (count==0) {
     printf("Aucun animal ne correspond a ces criteres\n");
 }
 }
+////////////////////
 
 
+
+
+
+////////////////////
 void afficher_recherche(int *search1, int *search2) {
 
     FILE * accueil=fopen("../Dessin/Compte/Bonjour.txt", "r");
@@ -274,7 +298,14 @@ void afficher_recherche(int *search1, int *search2) {
 
 
 }
+////////////////////
 
+
+
+
+
+
+////////////////////
 void rechercher_animal() {
     int search1=-1;
     int search2=-1;
@@ -377,3 +408,4 @@ void rechercher_animal() {
     }
     free(tab);
 }
+////////////////////
