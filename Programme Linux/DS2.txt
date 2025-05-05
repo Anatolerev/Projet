@@ -1,0 +1,201 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+
+typedef enum {
+    CHAT;
+    CHIEN;
+    HAMTSER;
+    AUTRUCHE;
+
+}Espece;
+
+
+
+typedef struct {
+
+    Espece race;
+    char *nom;
+    float poids;
+    int age;
+
+}Animal;
+
+
+
+Animal constructeur () {
+    Animal a1;
+
+    printf("Quel est votre animal:\n0:Chat\n1:Chien\n2:Hamster\n3:Autruche\n");
+    scanf("%d", &a1.race);
+
+    printf("Quel age a-t-il?\n");
+    scanf("%d", &a1.age);
+
+    printf("Combein pese-t-il?\n");
+    scanf("%f", &a1.poids);
+
+    int n;
+    printf("Quel est la taille de son nom?\n");
+    scanf("%d", &n);
+
+
+        a1.nom=malloc(siezeof(char)*n+1);
+            if (a1.nom==NULL) {
+                printf("ERREUR");
+                exit(10);
+            }
+
+    printf("Quel est le nom de votre animal?\n");
+    scanf("%s", a1.nom);
+
+return a1;
+}
+
+
+int* listerAnimal (int *pnb) {
+
+    printf("Combien d'animaux y'a-t-il dans le refuge?\n");
+    scanf("%d", *pnb);
+
+    int *tab_ani=NULL;
+    tab_ani=malloc(sizeof(int)*(*pnb));
+        if (tab_ani==0) {
+            printf("ERREUR");
+            exit(54);
+        }
+    for (int i=0; i<n; i++) {
+        tab_ani[i]=constructeur();
+    }
+
+return tab_ani;
+}
+
+
+int compare_mot(char *tab, char *tab2, int taille1, int taille2) {
+
+    if (taille1!=taille2) {
+        printf("Les mots sont différents\n");
+        return 1;
+    }
+    else {
+        for (int i=0; i<taille1; i++) {
+            if (*(tab+i)!=*(tab2+i)) {
+                printf("Les mots ont la même longueur mais sont différents\n");
+                return 1;
+            }
+
+        }
+    printf("Les mots sont identiques\n");
+    return 0;
+    }
+}
+
+
+
+int chercherMedor (Animal *tab, int *pnb, char *tab2, int *ptaille) {
+    int nombre=0;
+
+    for (int i=0; i<(*pnb); i++) {
+        int count=0;
+
+        for (int j=0; j<(*ptaille)+1; j++) {
+
+            if (tab[i].nom[j]==tab2[j]) {
+                count++;
+            }
+
+        }
+        if (count==(*ptaille)) {
+            nombre++;
+        }
+    }
+
+    if (nombre==0) {
+        return -1;
+    }
+    else {
+        return nombre;
+    }
+
+}
+
+
+
+
+int nourriture (Animal *tab, int *pnb) {
+
+    for (int i=0; i<(*pnb);i++) {
+            if (tab[i].race==2) {
+                printf("20g de croquettes/jour\n");
+            }
+            else if (tab[i].race==3) {
+                printf("2.5kg de croquettes/jour\n");
+            }
+            else{
+                if (tab[i].age<2) {
+                    printf("500g/jour\n");
+                }
+                else {
+                    printf("%fkg/jour\n", tab[i].poids*0.1);
+                }
+
+            }
+
+    }
+}
+
+
+
+
+Animal adoption (Animal *tab, int *pnb, char *tab2, int *ptaille) {
+    int nom=1;
+    for (int i=0; i<(*pnb); i++) {
+
+        if (strcmp(tab[i].nom, tab2)==0) {
+            nom=i;
+        }
+    }
+
+
+
+Animal *new_tab=NULL;
+    new_tab=malloc(sizeof(Animal)*((*pnb)-1));
+        if (new_tab==0) {
+            printf("ERREUR\n");
+            exit(45);
+        }
+
+    for (int i=0; i<nom; i++) {
+        new_tab[i]=tab[i];
+    }
+    for (int j=nom+1; j<((*pnb)-1); j++) {
+        new_tab[j-1]=tab[j];
+    }
+
+    free(tab);
+return new_tab;
+}
+
+
+
+
+
+
+
+
+
+
+
+int main() {
+
+    int nb;
+    int *pnb=&nb;
+    nb=0;
+
+    listerAnimal(&nb);
+
+
+    return 0;
+}
