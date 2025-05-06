@@ -203,26 +203,26 @@ void echanger(Race_compte* a, Race_compte* b) {
 ////////////////////
 
 ////////////////////
-int partition(Race_compte tab[], int low, int high) {
-    int pivot = tab[high].count;
-    int i = low - 1;
-    for (int j = low; j < high; j++) {
+int partition(Race_compte tab[], int premier, int dernier) {
+    int pivot = tab[dernier].count;
+    int i = premier - 1;
+    for (int j = premier; j < dernier; j++) {
                 if (tab[j].count > pivot) {
             i++;
             echanger(&tab[i], &tab[j]);
         }
     }
-    echanger(&tab[i + 1], &tab[high]);
+    echanger(&tab[i + 1], &tab[dernier]);
     return i + 1;
 }
 ////////////////////
 
 ////////////////////
-void quicksort(Race_compte tab[], int low, int high) {
-    if (low < high) {
-        int pi = partition(tab, low, high);
-        quicksort(tab, low, pi - 1);
-        quicksort(tab, pi + 1, high);
+void quicksort(Race_compte tab[], int premier, int dernier) {
+    if (premier < dernier) {
+        int pi = partition(tab, premier, dernier);
+        quicksort(tab, premier, pi - 1);
+        quicksort(tab, pi + 1, dernier);
     }
 }
 ////////////////////
