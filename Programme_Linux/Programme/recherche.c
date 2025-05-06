@@ -11,7 +11,7 @@ int *rechercher_nom(Animal *tab, int taille) {
         }
 
 
-    printf("Quel est le prenom de vous rechercher: ");
+    printf("\nQuel est le prenom de vous rechercher: ");
     scanf(" %99s", nom);
 
     nom[0]=toupper(nom[0]);
@@ -43,7 +43,7 @@ int *rechercher_age(Animal *tab, int taille) {
         }
 
     do {
-        printf("Vous souhaiter rechercher selon quel tranche d'âge?:\n0:<20ans\n1:>100ans\n2:Autre\n");
+        printf("\nVous souhaiter rechercher selon quel tranche d'âge?:\n0:<20ans\n1:>100ans\n2:Autre\n");
         scanf("%d", &age);
     }
     while (age<0 || age>2);
@@ -51,7 +51,7 @@ int *rechercher_age(Animal *tab, int taille) {
     switch (age) {
         case(0):
             for (int i=0; i<taille; i++) {
-                if (tab[i].bd.age<20) {
+                if (tab[i].bd.age<20 && tab[i].bd.age>0) {
                     tab_ID[i]=tab[i].ID;
                 }
                 else {
@@ -102,7 +102,7 @@ int* rechercher_espece(Animal *tab, int taille) {
     int race;
 
     do {
-        printf("Quel espece cherchez-vous?\n0:VARACTYL\n1:ZILLO BEAST\n2:PORG\n3:AIWHAS\n4:BANTHA\n5:KOWAKEIN\n");
+        printf("\nQuel espece cherchez-vous?\n0:VARACTYL\n1:ZILLO BEAST\n2:PORG\n3:AIWHAS\n4:BANTHA\n5:KOWAKEIN\n");
         scanf("%d", &race);
     }
     while (race<0 || race>5);
@@ -209,7 +209,7 @@ void compare_affiche( Animal *tab, int *tab_ID1, int *tab_ID2, int taille) { //c
     }
 
 if (count==0) {
-    printf("Aucun animal ne correspond a ces criteres\n");
+    printf("\n\n***\nAucun animal ne correspond a ces criteres\n");
 }
 }
 ////////////////////
@@ -287,7 +287,7 @@ void afficher_recherche(int *search1, int *search2) {
 
 
     do {
-        printf("Votre demande: ");
+        printf("\n\nVotre demande: ");
         if (scanf("%d", search2)!=1) {
             printf("Vueillez saisir un entier\n");
             exit(67);

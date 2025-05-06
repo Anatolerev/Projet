@@ -14,6 +14,7 @@ int main() {
                 printf("\n\n________________\n\nAppuyer sur Entrer pour continuer\n");
                 getchar();
                 getchar();
+                system("clear"); //linux
             break;
 
             case(1): //adopter_animal();

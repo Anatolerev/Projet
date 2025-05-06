@@ -372,9 +372,9 @@ void ajouter_animal() {
     }
 
 
-    if (nb==-1) {
+    if (nb==-1 || nb==50) {
         adoption_impossible();
-        exit(1); // changé dans fonction;
+        return; 
     }
     else {
         adoption_possible();
