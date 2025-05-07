@@ -1,3 +1,4 @@
+
 #include"Projet.h"
 
 
@@ -11,45 +12,46 @@ int main() {
 
         switch (choix) {
             case(0): rechercher_animal();
-                printf("\n\n________________\n\nAppuyer sur Entrer pour continuer\n");
-                getchar();
-                getchar();
-                system("clear"); //linux
+            printf("\n\n________________\n\nAppuyer sur Entrer pour continuer\n");
+            getchar();
+            getchar();
+            system("clear"); //linux
             break;
 
             case(1): //adopter_animal();
-            break;
+                break;
 
             case(2): ajouter_animal();
-                printf("\n\n________________\n\nAppuyer sur Entrer pour continuer\n");
-                getchar();
-                getchar();
-                system("clear"); //linux
+            printf("\n\n________________\n\nAppuyer sur Entrer pour continuer\n");
+            getchar();
+            getchar();
+            system("clear"); //linux
             break;
 
             case(3): afficher_registre();
-                printf("\n\n________________\n\nAppuyer sur Entrer pour continuer\n");
-                getchar();
-                getchar();
-                system("clear"); //linux
+            printf("\n\n________________\n\nAppuyer sur Entrer pour continuer\n");
+            getchar();
+            getchar();
+            system("clear"); //linux
             break;
 
             case(4): nettoyage();
-                printf("\n\n________________\n\nAppuyer sur Entrer pour continuer\n");
-                getchar();
-                getchar();
-                system("clear");
+            printf("\n\n________________\n\nAppuyer sur Entrer pour continuer\n");
+            getchar();
+            getchar();
+            system("clear");
             break;
 
             case(5): bye();
-                continuer=0;
+            continuer=0;
             break;
-            
+
             default:
-            	printf("\n***\nVeuillez sélectionner une valeur correcte.\n***\n\n");
+                printf("\n***\nVeuillez sélectionner une valeur correcte.\n***\n\n");
             break;
         }
     }
 
     return 0;
 }
+
