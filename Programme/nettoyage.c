@@ -1,5 +1,38 @@
 #include"Projet.h"
 
+////////////////////
+Temps convertion_temps(int t){
+
+
+	int h=0;
+
+	Temps t1;
+	t1.heure=0;
+	t1.minute=0;
+
+	if(t<0){
+		printf("ERREUR 'convertion_temps'\n");
+		exit(45);
+	}
+
+
+	h=t/60;
+	t%=60;
+
+
+t1.heure=h;
+t1.minute=t;
+
+
+return t1;
+}
+////////////////////
+
+
+
+
+
+////////////////////
 const char* race_espece(Espece race) {
     switch (race) {
         case VARACTYL: return "VARACTYL";
@@ -11,16 +44,86 @@ const char* race_espece(Espece race) {
         default: return "INCONNU";
     }
 }
+////////////////////
 
-void nettoyage() { //TD08/Ex fichier/Ex tableau
 
-    FILE * cavalier=fopen("../Nettoyage/Cavalier.txt", "r");
-        if (cavalier==NULL) {
-            printf("Erreur nettoyage: %d\n", errno);
-            printf("Message d'erreur: %s\n", strerror(errno));
-            exit(21);
+
+
+////////////////////
+Race_compte* compter_animaux_race() {
+
+    Animal *tab=registre_tab(TAILLE);
+    if (tab==NULL) {
+        printf("ERREUR tab_regsitre 'nettoyage'\n");
+        exit(487);
+    }
+
+    Race_compte *tab2=malloc(sizeof(Race_compte)*6);
+
+    if (tab2==NULL) {
+        printf("ERREUR tab2 'compter'\n");
+        exit(174);
+    }
+
+    strcpy(tab2[0].nom, "VARACTYL");
+    strcpy(tab2[1].nom, "ZILLO_BEAST");
+    strcpy(tab2[2].nom, "PORG");
+    strcpy(tab2[3].nom, "AIWHAS");
+    strcpy(tab2[4].nom, "BANTHA");
+    strcpy(tab2[5].nom, "KOWAKIEN");
+
+    for (int i=0; i<6; i++) {
+        tab2[i].count=0;
+    }
+
+
+
+    for (int i=0; i<TAILLE; i++) {
+        if (tab[i].ID==0 && strlen(tab[i].nom)==0) {
+            continue;
         }
 
+        switch (tab[i].race) {
+            case(0):tab2[0].count++;
+            break;
+
+            case(1): tab2[1].count++;
+            break;
+
+            case(2): tab2[2].count++;
+            break;
+
+            case(3): tab2[3].count++;
+            break;
+
+            case(4): tab2[4].count++;
+            break;
+
+            case(5): tab2[5].count++;
+            break;
+
+            default:printf("Erreur race 'afficher resigtre'\n");
+            exit(1565);
+            break;
+        }
+
+    }
+    free(tab);
+    return tab2;
+}
+////////////////////
+
+
+
+
+////////////////////
+void nettoyage() {
+    FILE * cavalier=fopen("../Nettoyage/Cavalier.txt", "r");
+    if (cavalier==NULL) {
+        printf("Erreur nettoyage: %d\n", errno);
+        printf("Message d'erreur: %s\n", strerror(errno));
+        exit(21);
+    }
     int a=fgetc(cavalier);
 
     while (a!=EOF) {
@@ -31,7 +134,7 @@ void nettoyage() { //TD08/Ex fichier/Ex tableau
     fclose(cavalier);
 
     sleep(3);
-    system("cls"); //linux
+
 
 
     FILE* fichier = fopen("../Nettoyage/donnees.txt", "r");
@@ -41,54 +144,94 @@ void nettoyage() { //TD08/Ex fichier/Ex tableau
         exit(10);
     }
 
-    Clean tab[7];
+    Clean tab[6];
     int i = 0;
 
-    while (fscanf(fichier, "%s %d %d %[^\n]", tab[i].jour, &tab[i].race, &tab[i].temps, tab[i].comment) == 4) {
+    while (i < 6 && fscanf(fichier, "%19s %d %d %199[^\n]", tab[i].jour, &tab[i].race, &tab[i].temps, tab[i].comment) == 4) {
         i++;
     }
 
     fclose(fichier);
-    printf("\n\n");
+
+    Race_compte *tab_count=compter_animaux_race();
+    if (tab_count==NULL) {
+        printf("ERREUR tab_count 'nettoyage'\n");
+        exit(12365);
+    }
+
+    printf("\n\n\n");
+
+
     for (int i = 0; i < 6; i++) {
+
+        int count=0;
+
+        for (int j=0; j<6; j++) {
+
+            if ( strcmp( race_espece(tab[i].race), tab_count[j].nom )==0) {
+                count=tab_count[j].count;
+                break;
+            }
+        }
+
+	int temps_minute=tab[i].temps * count;
+        Temps t1=convertion_temps(temps_minute);
+
         printf("\n***\n");
         printf("Jour: %s\n", tab[i].jour);
         printf("Espece: %s\n", race_espece(tab[i].race));
-        printf("Temps en minutes: %d\n", tab[i].temps);
+        printf("Temps unitaire en minutes: %d\n", tab[i].temps);
+        printf("Temps total: %dheure(s) %d minute(s)\n", t1.heure, t1.minute);
         printf("Commentaire: %s\n", tab[i].comment);
         printf("***\n");
     }
 
-}
 
+
+
+    free(tab_count);
+}
+////////////////////
+
+
+
+////////////////////
 void echanger(Race_compte* a, Race_compte* b) {
     Race_compte temp = *a;
     *a = *b;
     *b = temp;
 }
-int partition(Race_compte tab[], int low, int high) {
-    int pivot = tab[high].count;
-    int i = low - 1;
-    for (int j = low; j < high; j++) {
+////////////////////
+
+////////////////////
+int partition(Race_compte tab[], int premier, int dernier) {
+    int pivot = tab[dernier].count;
+    int i = premier - 1;
+    for (int j = premier; j < dernier; j++) {
                 if (tab[j].count > pivot) {
             i++;
             echanger(&tab[i], &tab[j]);
         }
     }
-    echanger(&tab[i + 1], &tab[high]);
+    echanger(&tab[i + 1], &tab[dernier]);
     return i + 1;
 }
+////////////////////
 
-void quicksort(Race_compte tab[], int low, int high) {
-    if (low < high) {
-        int pi = partition(tab, low, high);
-        quicksort(tab, low, pi - 1);
-        quicksort(tab, pi + 1, high);
+////////////////////
+void quicksort(Race_compte tab[], int premier, int dernier) {
+    if (premier < dernier) {
+        int pi = partition(tab, premier, dernier);
+        quicksort(tab, premier, pi - 1);
+        quicksort(tab, pi + 1, dernier);
     }
 }
+////////////////////
 
 
 
+
+////////////////////
 void afficher_registre() {
 
 
@@ -111,9 +254,9 @@ void afficher_registre() {
     fclose(doc);
         sleep(2);
 
+//fermeture bonjour
 
-
-    Animal* tab=registre_tab(TAILLE);
+    Animal* tab=registre_tab(TAILLE);//reçoit tableau contenant les données registres
     int tab_count[6]={0};
 
 
@@ -159,6 +302,7 @@ void afficher_registre() {
     };
 
     quicksort(tab_race, 0, 5);
+
     printf("\n\n\nVoici les comptes:\n");
     for (int i = 0; i < 6; i++) {
         printf("%s : %d\n", tab_race[i].nom, tab_race[i].count);
@@ -169,7 +313,7 @@ void afficher_registre() {
 
     sleep(2);
 
-    int *tab_espece=rechercher_espece(tab, TAILLE);
+    int *tab_espece=rechercher_espece(tab, TAILLE);//renvoit un tableau composé de ID ou de -1
 
     for (int i=0; i<TAILLE; i++) {
         if (tab_espece[i]==-1) {
@@ -192,17 +336,20 @@ void afficher_registre() {
         }
     }
 }
+////////////////////
 
 
+
+////////////////////
 void ajouter_animal() {
     watto_bonjour();
-    printf("\n\n____________________________\nAppuyer sur entrer\n\n");
+    printf("\n\n____________________________\nAppuyer deux fois sur entrer\n\n");
     getchar();
     getchar();
 
     printf("\n\n");
     watto_espece();
-    printf("\n\n____________________________\nAppuyer sur entrer\n\n");
+    printf("\n\n____________________________\nAppuyer deux fois sur entrer\n\n");
     getchar();
     getchar();
 
@@ -220,15 +367,15 @@ void ajouter_animal() {
     for (int i=0; i<TAILLE; i++) {
         if (tab[i].ID==0 && strlen(tab[i].nom)==0) {
             nb=i;
-            printf("Il y'a %d animaux dans le refuge\n", nb);
+            printf("\nIl y'a %d animaux dans le refuge\n", nb);
             break;
         }
     }
 
 
-    if (nb==-1) {
+    if (nb==-1 || nb>=50) {
         adoption_impossible();
-        exit(1); // changé dans fonction;
+        return;
     }
     else {
         adoption_possible();
@@ -243,19 +390,22 @@ void ajouter_animal() {
     tab[nb].nom[0]=toupper(tab[nb].nom[0]);
 
     do {
-        printf("Selectionner son espece:\n0:VARACTYL\n1:ZILLO BEAST\n2:PORG\n3:AIWHAS\n4:BANTHA\n5:KOWAKIEN\n");
+        printf("\n\nSelectionner son espece:\n0:VARACTYL\n1:ZILLO BEAST\n2:PORG\n3:AIWHAS\n4:BANTHA\n5:KOWAKIEN\n");
         scanf(" %d", &tab[nb].race);
         while (getchar() != '\n');
     }while (tab[nb].race<0 || tab[nb].race>5);
 
+
+    printf("\n\nNous sommes en 3026 et il nous est impossible de prendre des animaux nés avant 2876/\n\n");
+
     do {
-        printf("Date de naissance: jj/mm/aaaa\n");
+        printf("\n\nDate de naissance, veuillez respecter ce format: jj/mm/aaaa\n");
         scanf("%d/%d/%d", &tab[nb].bd.jour, &tab[nb].bd.mois, &tab[nb].bd.année);
         while (getchar() != '\n');
     }while ( (tab[nb].bd.jour<1 || tab[nb].bd.jour>31) || (tab[nb].bd.mois<1 || tab[nb].bd.mois>12) || (tab[nb].bd.année<2876 || tab[nb].bd.année>3026) );
 
     do {
-        printf("Poids:\n");
+        printf("\n\nPoids en kilogrammes:\n");
         scanf("%d", &tab[nb].poids);
         while (getchar() != '\n');
     }while (tab[nb].poids<1 || tab[nb].poids>3200);
@@ -316,4 +466,4 @@ fclose(doc);
     printf("Regsitre mis a jour avec succes\n");
 
 }
-
+////////////////////
