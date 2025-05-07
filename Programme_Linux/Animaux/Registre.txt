@@ -7,7 +7,7 @@
 18 Nebula 3 14/05/2992 995
 10 Fjord 0 22/07/2997 433
 8 Ragnar 0 18/08/3000 454
-5 Lyra 4 03/01/3010 704 Lourd, tetu, et il avance seulement s'il en a envie. Bonne chance.
+5 Lyra 4 03/01/3010 704 Lourd, tetu, et il avance seulement si lui en a envie. Bonne chance.
 40 Solstice 0 26/08/3004 503
 46 Thorne 3 10/08/2994 808
 32 Vesper 4 16/10/3015 833
