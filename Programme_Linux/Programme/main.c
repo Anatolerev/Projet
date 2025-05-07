@@ -18,8 +18,12 @@ int main() {
             system("clear"); //linux
             break;
 
-            case(1): //adopter_animal();
-                break;
+            case(1): adoption();
+            printf("\n\n________________\n\nAppuyer sur Entrer pour continuer\n");
+            getchar();
+            getchar();
+            system("clear");
+            break;
 
             case(2): ajouter_animal();
             printf("\n\n________________\n\nAppuyer sur Entrer pour continuer\n");
@@ -54,4 +58,3 @@ int main() {
 
     return 0;
 }
-

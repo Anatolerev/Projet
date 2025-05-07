@@ -416,3 +416,191 @@ void rechercher_animal() {
     free(tab);
 }
 ////////////////////
+
+
+
+
+
+////////////////////
+void adoption(){
+	int ID;
+	int trv=0;
+
+	do {
+		printf("Quel est l' ID de l'animal a adopter (entier entre 0 et 50 inclus) ? \n ");
+		while (scanf("%d", &ID)!=1) {
+			while (getchar()!='\n');
+			printf("Veuillez saisir un entier\n");
+		}
+	}while (ID<0 || ID>50);
+
+
+
+
+
+
+
+	FILE *fichier = fopen("../Animaux/Registre.txt","r");
+	FILE *temp = fopen("../Animaux/temp.txt","w");
+	if( fichier==NULL || temp==NULL) {
+		printf("ERREUR 'adoption': %d\n", errno);
+		printf("Message d'erreur: %s\n", strerror(errno));
+		exit(11);
+	}
+
+
+
+
+	char line[1000]={0};
+
+	int id_fonction=-1;
+	char nom[100]={0};
+	char poubelle[500]={0};
+	int race=-1;
+	Animal a1, a2;
+	char remarque_temps[3000]={0};
+	int i=0;
+
+
+	while(fgets(line, sizeof(line),fichier)!=NULL && i<TAILLE){ // COUYILLZ
+		line[strcspn(line, "\r\n")]='\0';
+
+		int nb_champs=sscanf(line, "%d %99s %d %d/%d/%d %d %[^\n]", &a1.ID, a1.nom, &a1.race, &a1.bd.jour, &a1.bd.mois, &a1.bd.année, &a1.poids, remarque_temps);
+
+		if (nb_champs==8) {
+			strcpy(a1.remarque, remarque_temps);
+		}
+		else if (nb_champs==7) {
+			a1.remarque[0]='\0';
+		}
+
+
+
+
+		if(ID==a1.ID){
+			trv++;
+			a2=a1;
+		}
+		else{
+			fputs(line,temp);
+			fputs("\n", temp);
+		}
+		i++;
+	}
+
+
+
+	fclose(fichier);
+	fclose(temp);
+
+
+	if (trv==0) {
+		printf("Aucun ID correspondant chez nous\n");
+		return;
+	}
+
+	else if(trv>1){ //stop si deux ID identiques
+		printf("Trouvé deux ID correspondant\nERREUR\n");
+		return;
+	}
+
+
+
+
+	int R;
+	char titre[50];
+
+	printf( "ID trouvé dans le registre ! \n" );
+
+
+	do {
+		printf("\nD'où venez vous (entier entre 1 et 3 inclus)? \n1:Empire\n2:République\n3:Autres\n");
+		while (scanf("%d",&R)!=1) {
+			while (getchar()!='\n');
+			printf("Veuillez saisir un entier\n");
+		}
+	}while(R<1 || R>3 );
+
+
+	switch (R) {
+		case(1):
+			printf("Nous n'avons pas d'animaux pour vous!\nLes autorités republicaines sont en route\nVeuillez vous soumettre sans montrer de resistance.\n");
+			remove(TEMPFILE);
+			return;
+		break;
+
+		case(2):
+			if(a2.race!=1) { //republicain mais demande pas zillo
+				printf("Adoption accordée !\n ");
+
+				remove(FILENAME);
+				rename(TEMPFILE,FILENAME);
+
+				printf("adoption enregistrée!\n");
+			}
+			else {
+				printf("l'adoption est refusée !\nIl vous est impossible d'adopter le zillo beast\n " );
+				remove(TEMPFILE);
+				return;
+			}
+		break;
+
+
+
+		case(3):
+
+			printf("Quelle est votre titre ou votre nom?\n Veuilllez mettre des '_' dans les noms composés\n");
+		scanf(" %s", titre);
+
+		titre[0]=toupper(titre[0]);
+
+
+		if( strcmp(titre, "Yoda")==0){
+			printf("acces autorisé !! \nadoption accordée !\n");
+
+			remove(FILENAME);
+			rename(TEMPFILE, FILENAME);
+
+			printf("adoption enregistrée!\n");
+
+		}
+		else if(strcmp(titre, "Chasseur_de_prime")==0) {
+			if ( a2.race!=1) {
+				//demande pas zillo ok
+				printf("acces autorisé !! \nadoption accordée !\n ");
+
+
+				remove(FILENAME);
+				rename(TEMPFILE,FILENAME);
+
+				printf("adoption enregistrée!\n");
+			}
+			else {
+				printf("Adoption refusée!\n Vous n'avez pas les droits\n");
+				remove(TEMPFILE);
+			}
+		}
+		else {
+			if (a2.race!=1) {
+				printf("Vous avez la possibilité d'adopter cet animal\nAdoption accordée\n");
+				remove(FILENAME);
+				rename(TEMPFILE,FILENAME);
+			}
+			else {
+				printf("Vous êtes une personne étrange...\nNous ne vous confirons jamais un zillo beast\nVeuillez quitter ce lieu, nous ne vous faisons pas confiance\n");
+				remove(TEMPFILE);
+			}
+
+		}
+
+		break;
+
+		default:
+			printf("Nous ne connaissons pas cette provenance\n");
+			remove(TEMPFILE);
+		break;
+
+
+	}
+}
+////////////////////

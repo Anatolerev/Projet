@@ -108,6 +108,7 @@ Race_compte* compter_animaux_race() {
         }
 
     }
+    free(tab);
     return tab2;
 }
 ////////////////////

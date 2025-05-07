@@ -7,11 +7,14 @@
 #include<ctype.h>
 #define TAILLE 51
 #include<stdbool.h>
+#define FILENAME "../Animaux/Registre.txt"
+#define TEMPFILE "../Animaux/temp.txt"
+
 
 
 typedef struct {
-	int minute;
-	int heure;
+    int minute;
+    int heure;
 }Temps;
 
 
@@ -86,6 +89,8 @@ void echanger(Race_compte* a, Race_compte* b);//nettoyage.c
 int partition(Race_compte tab[], int low, int high);//nettoyage.c
 void quicksort(Race_compte tab[], int low, int high);//nettoyage.c
 Temps convertion_temps(int t);//nettoyage.c
+void adoption();//recherche.c
+
 
 
 int *rechercher_nom(Animal *tab, int taille);//recherche.c
@@ -94,6 +99,8 @@ int* rechercher_espece(Animal *tab, int taille);//recherche.c
 void compare_affiche( Animal *tab, int *tab_ID1, int *tab_ID2, int taille);//recherche.c
 void rechercher_animal();//recherche.c
 void afficher_recherche(int *search1, int *search2);//recherche.c
+void adoption();//recherche.c
+
 
 
 
