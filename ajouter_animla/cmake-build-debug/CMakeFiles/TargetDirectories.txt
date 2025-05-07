@@ -1,3 +1,0 @@
-D:/CY TECH/Info/Projet/Test/ajouter_animla/cmake-build-debug/CMakeFiles/ajouter_animla.dir
-D:/CY TECH/Info/Projet/Test/ajouter_animla/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/CY TECH/Info/Projet/Test/ajouter_animla/cmake-build-debug/CMakeFiles/rebuild_cache.dir
