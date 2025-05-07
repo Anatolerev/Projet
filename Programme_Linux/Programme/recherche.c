@@ -11,7 +11,7 @@ int *rechercher_nom(Animal *tab, int taille) {
         }
 
 
-    printf("\nQuel est le prenom de vous rechercher: ");
+    printf("\nQuel est le prenom que vous rechercher: ");
     scanf(" %99s", nom);
 
     nom[0]=toupper(nom[0]);
@@ -44,7 +44,10 @@ int *rechercher_age(Animal *tab, int taille) {
 
     do {
         printf("\nVous souhaiter rechercher selon quel tranche d'âge?:\n0:<20ans\n1:>100ans\n2:Autre\n");
-        scanf("%d", &age);
+        while (scanf("%d", &age)!=1) {
+            while (getchar()!='\n');
+            printf("Veuillez entrer un entier\n");
+        }
     }
     while (age<0 || age>2);
 
@@ -103,7 +106,10 @@ int* rechercher_espece(Animal *tab, int taille) {
 
     do {
         printf("\nQuel espece cherchez-vous?\n0:VARACTYL\n1:ZILLO BEAST\n2:PORG\n3:AIWHAS\n4:BANTHA\n5:KOWAKEIN\n");
-        scanf("%d", &race);
+        while (scanf("%d", &race)!=1) {
+            while (getchar()!='\n');
+            printf("Veuillez saisir un entier\n");
+        }
     }
     while (race<0 || race>5);
 
@@ -187,14 +193,14 @@ void compare_affiche( Animal *tab, int *tab_ID1, int *tab_ID2, int taille) { //c
                 printf("\n***\n");
                 printf("L'animal %d correspond a votre recherche: \n", tab_ID1[i]);
                 count++;
-                
-                	
+
+
 
                     for (int k=0; k<taille; k++) {
 
                         if (tab[k].ID==tab_ID1[i]) {
-                        
-                        	
+
+
                             printf("ID:%d\nNom:%s\nEspece:%s\nDate de naissance:%d/%d/%d\nAge:%d\nPoids:%d\n", tab[k].ID, tab[k].nom, race_espece(tab[k].race), tab[k].bd.jour, tab[k].bd.mois, tab[k].bd.année, (3026-tab[k].bd.année), tab[k].poids);
 
                                 if (strlen(tab[k].remarque)>0) {
@@ -256,10 +262,11 @@ void afficher_recherche(int *search1, int *search2) {
     fclose(choix1);
 
     do {
-        printf("Votre demande: ");
-        if (scanf("%d", search1)!=1) {
-            printf("Vueillez saisir un entier\n");
-            exit(76);
+        printf("Votre demande (entier entre 0 et 2 inclus): ");
+
+        while (scanf("%d", search1)!=1) {
+            while (getchar()!='\n');
+            printf("Vueuillez saisir un entier\n");
         }
 
     }
@@ -287,10 +294,10 @@ void afficher_recherche(int *search1, int *search2) {
 
 
     do {
-        printf("\n\nVotre demande: ");
-        if (scanf("%d", search2)!=1) {
-            printf("Vueillez saisir un entier\n");
-            exit(67);
+        printf("\n\nVotre demande (entier entre 0 et 3 inclus): ");
+        while (scanf("%d", search2)!=1) {
+            while (getchar()!='\n');
+            printf("Veuillez saisir un entier\n");
         }
     }
     while (*search2<0 || *search2>3);
