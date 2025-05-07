@@ -5,7 +5,7 @@ Temps convertion_temps(int t){
 
 
 	int h=0;
-	
+
 	Temps t1;
 	t1.heure=0;
 	t1.minute=0;
@@ -14,12 +14,12 @@ Temps convertion_temps(int t){
 		printf("ERREUR 'convertion_temps'\n");
 		exit(45);
 	}
-	
+
 
 	h=t/60;
 	t%=60;
-	
-	
+
+
 t1.heure=h;
 t1.minute=t;
 
@@ -175,7 +175,7 @@ void nettoyage() {
 
 	int temps_minute=tab[i].temps * count;
         Temps t1=convertion_temps(temps_minute);
-        
+
         printf("\n***\n");
         printf("Jour: %s\n", tab[i].jour);
         printf("Espece: %s\n", race_espece(tab[i].race));
@@ -301,7 +301,7 @@ void afficher_registre() {
     };
 
     quicksort(tab_race, 0, 5);
-    
+
     printf("\n\n\nVoici les comptes:\n");
     for (int i = 0; i < 6; i++) {
         printf("%s : %d\n", tab_race[i].nom, tab_race[i].count);
@@ -372,9 +372,9 @@ void ajouter_animal() {
     }
 
 
-    if (nb==-1 || nb==50) {
+    if (nb==-1 || nb>=50) {
         adoption_impossible();
-        return; 
+        return;
     }
     else {
         adoption_possible();
@@ -394,9 +394,9 @@ void ajouter_animal() {
         while (getchar() != '\n');
     }while (tab[nb].race<0 || tab[nb].race>5);
 
-    
+
     printf("\n\nNous sommes en 3026 et il nous est impossible de prendre des animaux nés avant 2876/\n\n");
-    
+
     do {
         printf("\n\nDate de naissance, veuillez respecter ce format: jj/mm/aaaa\n");
         scanf("%d/%d/%d", &tab[nb].bd.jour, &tab[nb].bd.mois, &tab[nb].bd.année);
@@ -466,4 +466,3 @@ fclose(doc);
 
 }
 ////////////////////
-
