@@ -78,6 +78,16 @@ void adoption_impossible();//welcome.c
 void adoption_possible();//welcome.c
 void watto_bonjour();//welcome.c
 void watto_espece();//welcome.c
+void wando_id();
+void wando_id_introuvable();
+void mando_provenance();
+void mando_empire();
+void mando_accepte();
+void mando_refuse();
+void mando_yoda();
+void mando_alerte();
+
+
 
 
 void afficher_registre(); //nettoyage.c

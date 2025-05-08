@@ -387,3 +387,222 @@ void watto_espece() {
     fclose(fichier);
 }
 ////////////////////
+
+
+////////////////////
+void wando_id() {
+    FILE * fichier=fopen("../Dessin/Mando/mando_id.txt", "r"); //Lis le texte
+
+    if(fichier==NULL){
+        printf("ERREUR 'wando_id': %d\n", errno);
+        printf("Message d'erreur: %s\n", strerror(errno));
+        exit(41);
+    }
+
+
+    int c=fgetc(fichier);
+
+    while(c!=EOF){
+
+        printf("%c", c);
+        c=fgetc(fichier);
+    }
+
+
+    fclose(fichier);
+}
+////////////////////
+
+
+////////////////////
+void wando_id_introuvable() {
+    FILE *fichier = fopen("../Dessin/Mando/mando_id_introuvable.txt", "r"); //Lis le texte
+
+    if
+    (fichier == NULL){
+        printf("ERREUR 'wando_id_introuvable': %d\n", errno);
+        printf("Message d'erreur: %s\n", strerror(errno));
+        exit(456576);
+    }
+
+
+    int c = fgetc(fichier);
+
+    while (c!=EOF){
+
+        printf("%c", c);
+        c=fgetc(fichier);
+    }
+
+
+    fclose(fichier);
+
+}
+////////////////////
+
+
+
+////////////////////
+void mando_provenance() {
+    FILE *fichier = fopen("../Dessin/Mando/mando_provenance.txt", "r"); //Lis le texte
+
+    if
+    (fichier == NULL){
+        printf("ERREUR 'wando_provenance': %d\n", errno);
+        printf("Message d'erreur: %s\n", strerror(errno));
+        exit(453);
+    }
+
+
+    int c = fgetc(fichier);
+
+    while (c!=EOF){
+
+        printf("%c", c);
+        c=fgetc(fichier);
+    }
+
+
+    fclose(fichier);
+
+}
+////////////////////
+
+
+
+
+////////////////////
+void mando_empire() {
+    FILE *fichier = fopen("../Dessin/Mando/mando_empire.txt", "r"); //Lis le texte
+
+    if
+    (fichier == NULL){
+        printf("ERREUR 'wando_empire': %d\n", errno);
+        printf("Message d'erreur: %s\n", strerror(errno));
+        exit(482);
+    }
+
+
+    int c = fgetc(fichier);
+
+    while (c!=EOF){
+
+        printf("%c", c);
+        c=fgetc(fichier);
+    }
+
+
+    fclose(fichier);
+
+}
+////////////////////
+
+
+
+
+////////////////////
+void mando_accepte() {
+    FILE *fichier = fopen("../Dessin/Mando/mando_accepte.txt", "r"); //Lis le texte
+
+    if
+    (fichier == NULL){
+        printf("ERREUR 'wando_accepte': %d\n", errno);
+        printf("Message d'erreur: %s\n", strerror(errno));
+        exit(511);
+    }
+
+
+    int c = fgetc(fichier);
+
+    while (c!=EOF){
+
+        printf("%c", c);
+        c=fgetc(fichier);
+    }
+
+
+    fclose(fichier);
+
+}
+////////////////////
+
+
+
+////////////////////
+void mando_refuse() {
+    FILE *fichier = fopen("../Dessin/Mando/mando_refuse.txt", "r"); //Lis le texte
+
+    if
+    (fichier == NULL){
+        printf("ERREUR 'wando_refuse': %d\n", errno);
+        printf("Message d'erreur: %s\n", strerror(errno));
+        exit(539);
+    }
+
+
+    int c = fgetc(fichier);
+
+    while (c!=EOF){
+
+        printf("%c", c);
+        c=fgetc(fichier);
+    }
+
+
+    fclose(fichier);
+
+}
+////////////////////
+
+
+////////////////////
+void mando_yoda() {
+    FILE *fichier = fopen("../Dessin/Mando/mando_yoda.txt", "r"); //Lis le texte
+
+    if(fichier == NULL){
+        printf("ERREUR 'wando_yoda': %d\n", errno);
+        printf("Message d'erreur: %s\n", strerror(errno));
+        exit(565);
+    }
+
+
+    int c = fgetc(fichier);
+
+    while (c!=EOF){
+
+        printf("%c", c);
+        c=fgetc(fichier);
+    }
+
+
+    fclose(fichier);
+
+}
+////////////////////
+
+
+
+////////////////////
+void mando_alerte() {
+    FILE *fichier = fopen("../Dessin/Mando/mando_alerte.txt", "r"); //Lis le texte
+
+    if(fichier == NULL){
+        printf("ERREUR 'wando_alerte': %d\n", errno);
+        printf("Message d'erreur: %s\n", strerror(errno));
+        exit(592);
+    }
+
+
+    int c = fgetc(fichier);
+
+    while (c!=EOF){
+
+        printf("%c", c);
+        c=fgetc(fichier);
+    }
+
+
+    fclose(fichier);
+
+}
+////////////////////
