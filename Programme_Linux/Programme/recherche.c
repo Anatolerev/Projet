@@ -426,8 +426,11 @@ void adoption(){
 	int ID;
 	int trv=0;
 
+
+    wando_id();
+
 	do {
-		printf("Quel est l' ID de l'animal a adopter (entier entre 0 et 50 inclus) ? \n ");
+	    printf("\n\nVotre demande (entier entre 0 et 50 inclus): ");
 		while (scanf("%d", &ID)!=1) {
 			while (getchar()!='\n');
 			printf("Veuillez saisir un entier\n");
@@ -493,9 +496,10 @@ void adoption(){
 	fclose(fichier);
 	fclose(temp);
 
+    printf("\n\n\n\n");
 
 	if (trv==0) {
-		printf("Aucun ID correspondant chez nous\n");
+	    wando_id_introuvable();
 		return;
 	}
 
@@ -510,11 +514,11 @@ void adoption(){
 	int R;
 	char titre[50];
 
-	printf( "ID trouvé dans le registre ! \n" );
+	mando_provenance();
 
 
 	do {
-		printf("\nD'où venez vous (entier entre 1 et 3 inclus)? \n1:Empire\n2:République\n3:Autres\n");
+		printf("\n\nVotre demande(entier entre 1 et 3 inclus): ");
 		while (scanf("%d",&R)!=1) {
 			while (getchar()!='\n');
 			printf("Veuillez saisir un entier\n");
@@ -524,22 +528,21 @@ void adoption(){
 
 	switch (R) {
 		case(1):
-			printf("Nous n'avons pas d'animaux pour vous!\nLes autorités republicaines sont en route\nVeuillez vous soumettre sans montrer de resistance.\n");
-			remove(TEMPFILE);
+            mando_empire();
+		    remove(TEMPFILE);
 			return;
 		break;
 
 		case(2):
-			if(a2.race!=1) { //republicain mais demande pas zillo
-				printf("Adoption accordée !\n ");
+			if(a2.race!=1) {
+			    //republicain mais demande pas zillo
+				mando_accepte();
 
-				remove(FILENAME);
-				rename(TEMPFILE,FILENAME);
-
-				printf("adoption enregistrée!\n");
+			    remove(FILENAME);
+			    rename(TEMPFILE,FILENAME);
 			}
 			else {
-				printf("l'adoption est refusée !\nIl vous est impossible d'adopter le zillo beast\n " );
+				mando_refuse();
 				remove(TEMPFILE);
 				return;
 			}
@@ -556,39 +559,36 @@ void adoption(){
 
 
 		if( strcmp(titre, "Yoda")==0){
-			printf("acces autorisé !! \nadoption accordée !\n");
+			mando_yoda();
 
 			remove(FILENAME);
 			rename(TEMPFILE, FILENAME);
-
-			printf("adoption enregistrée!\n");
 
 		}
 		else if(strcmp(titre, "Chasseur_de_prime")==0) {
 			if ( a2.race!=1) {
 				//demande pas zillo ok
-				printf("acces autorisé !! \nadoption accordée !\n ");
+				mando_accepte();
 
 
 				remove(FILENAME);
 				rename(TEMPFILE,FILENAME);
 
-				printf("adoption enregistrée!\n");
 			}
 			else {
-				printf("Adoption refusée!\n Vous n'avez pas les droits\n");
+				mando_refuse();
 				remove(TEMPFILE);
 			}
 		}
 		else {
 			if (a2.race!=1) {
-				printf("Vous avez la possibilité d'adopter cet animal\nAdoption accordée\n");
-				remove(FILENAME);
+                mando_accepte();
+			    remove(FILENAME);
 				rename(TEMPFILE,FILENAME);
 			}
 			else {
-				printf("Vous êtes une personne étrange...\nNous ne vous confirons jamais un zillo beast\nVeuillez quitter ce lieu, nous ne vous faisons pas confiance\n");
-				remove(TEMPFILE);
+			    mando_alerte();
+			    remove(TEMPFILE);
 			}
 
 		}
