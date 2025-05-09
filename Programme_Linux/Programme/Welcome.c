@@ -606,3 +606,85 @@ void mando_alerte() {
 
 }
 ////////////////////
+
+
+
+
+////////////////////
+/*void bienvenue() {
+    FILE *fichier = fopen("../Dessin/intro/univers.txt", "r"); //Lis le texte
+
+    if(fichier == NULL){
+        printf("ERREUR 'bienvenue': %d\n", errno);
+        printf("Message d'erreur: %s\n", strerror(errno));
+        exit(620);
+    }
+
+
+    int c = fgetc(fichier);
+
+    while (c!=EOF){
+
+        printf("%c", c);
+        c=fgetc(fichier);
+    }
+
+
+    fclose(fichier);
+
+}
+*/
+////////////////////
+
+
+
+////////////////////
+void star_wars() {
+    FILE *fichier = fopen("../Dessin/intro/star_wars.txt", "r"); //Lis le texte
+
+    if(fichier == NULL){
+        printf("ERREUR 'star_wars': %d\n", errno);
+        printf("Message d'erreur: %s\n", strerror(errno));
+        exit(645);
+    }
+
+
+    int c = fgetc(fichier);
+
+    while (c!=EOF){
+
+        printf("%c", c);
+        c=fgetc(fichier);
+    }
+
+
+    fclose(fichier);
+
+}
+////////////////////
+
+
+////////////////////
+void end() {
+    FILE *fichier = fopen("../Dessin/intro/end.txt", "r"); //Lis le texte
+
+    if(fichier == NULL){
+        printf("ERREUR 'end': %d\n", errno);
+        printf("Message d'erreur: %s\n", strerror(errno));
+        exit(66);
+    }
+
+
+    int c = fgetc(fichier);
+
+    while (c!=EOF){
+
+        printf("%c", c);
+        c=fgetc(fichier);
+    }
+
+
+    fclose(fichier);
+
+}
+////////////////////

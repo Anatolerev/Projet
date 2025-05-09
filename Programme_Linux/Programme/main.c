@@ -6,6 +6,12 @@
 int main() {
     int continuer=1;
 
+	//bienvenue();
+	//sleep(3);
+	system("clear");
+	star_wars();
+	printf("\n\n");
+
     while (continuer==1) {
         int choix=welcome();
         printf("Vous avez choisi la %d\n", choix); //supprimer
@@ -55,6 +61,8 @@ int main() {
             break;
         }
     }
-
+	sleep(2);
+	printf("\n\n\n");
+	end();
     return 0;
 }

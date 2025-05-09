@@ -86,6 +86,10 @@ void mando_accepte();
 void mando_refuse();
 void mando_yoda();
 void mando_alerte();
+//void bienvenue();
+void star_wars();
+void end();
+
 
 
 
