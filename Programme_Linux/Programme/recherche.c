@@ -426,7 +426,7 @@ void adoption(){
 	int ID;
 	int trv=0;
 
-
+	printf("\n\n\n\n");
     wando_id();
 
 	do {
@@ -517,6 +517,7 @@ void adoption(){
 	mando_provenance();
 
 
+
 	do {
 		printf("\n\nVotre demande(entier entre 1 et 3 inclus): ");
 		while (scanf("%d",&R)!=1) {
@@ -525,7 +526,8 @@ void adoption(){
 		}
 	}while(R<1 || R>3 );
 
-
+	printf("\n\n\n\n");
+	
 	switch (R) {
 		case(1):
             mando_empire();
@@ -551,14 +553,15 @@ void adoption(){
 
 
 		case(3):
-
-			printf("Quelle est votre titre ou votre nom?\n Veuilllez mettre des '_' dans les noms composés\n");
+			printf("\n\n\n\n");
+			printf("\n***\nQuelle est votre titre ou votre nom?\n Veuilllez mettre des '_' dans les noms composés\n***\n");
 		scanf(" %s", titre);
 
 		titre[0]=toupper(titre[0]);
 
 
 		if( strcmp(titre, "Yoda")==0){
+			printf("\n\n\n\n");
 			mando_yoda();
 
 			remove(FILENAME);
@@ -568,6 +571,7 @@ void adoption(){
 		else if(strcmp(titre, "Chasseur_de_prime")==0) {
 			if ( a2.race!=1) {
 				//demande pas zillo ok
+				printf("\n\n\n\n");
 				mando_accepte();
 
 
@@ -576,17 +580,21 @@ void adoption(){
 
 			}
 			else {
+				printf("\n\n\n\n");
 				mando_refuse();
 				remove(TEMPFILE);
 			}
 		}
 		else {
 			if (a2.race!=1) {
-                mando_accepte();
-			    remove(FILENAME);
+                		printf("\n\n\n\n");
+                		mando_accepte();
+			    	
+			    	remove(FILENAME);
 				rename(TEMPFILE,FILENAME);
 			}
 			else {
+			    printf("\n\n\n\n");
 			    mando_alerte();
 			    remove(TEMPFILE);
 			}

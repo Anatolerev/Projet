@@ -1,13 +1,12 @@
 50 Zephyr 1 27/05/2908 1892
 19 Nyx 2 13/12/3010 8 Il est minuscule mais super vif, impossible a attraper sans qu il file entre tes doigts
-1 Orion 1 08/01/2923 1787 Il t observe, te teste, puis attaque quand t es distrait. Pas d'erreur possible.
 33 Saphira 1 21/06/2927 1782 Il est calme, mais on ne baisse jamais la garde. Trop puissant
 34 Tundra 0 22/03/3002 422 Gentil comme tout, il viendrait meme te consoler si t es triste.
 44 Echo 0 09/09/3002 402
 18 Nebula 3 14/05/2992 995
 10 Fjord 0 22/07/2997 433
 8 Ragnar 0 18/08/3000 454
-5 Lyra 4 03/01/3010 704 Lourd, tetu, et il avance seulement s'il en a envie. Bonne chance.
+5 Lyra 4 03/01/3010 704 Lourd, tetu, et il avance seulement si lui en a envie. Bonne chance.
 40 Solstice 0 26/08/3004 503
 46 Thorne 3 10/08/2994 808
 32 Vesper 4 16/10/3015 833
@@ -31,4 +30,3 @@
 17 Elara 4 06/01/3013 703 On dirait qu il vit dans une autre dimension... mais il est super paisible.
 4 Fable 2 20/07/3001 10
 7 Kumo 2 04/09/3007 15 Il passe sa journee a manger et a dormir. Pas le plus fute du groupe.
-26 Sable 0 05/10/3000 421
