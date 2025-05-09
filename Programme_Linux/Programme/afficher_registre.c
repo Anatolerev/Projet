@@ -120,7 +120,8 @@ int choix;
 
 
 
-
+free(tab_espece);
+free(tab);
 }
 ////////////////////
 

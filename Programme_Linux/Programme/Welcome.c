@@ -41,7 +41,7 @@ Animal* registre_tab(int taille) {
             tab[i].remarque[0]='\0';
         }
         else{
-            printf("Donnees invalides 'recherche'\n");
+            printf("Donnees invalides 'registre_tab'\n");
             exit(123);
         }
         tab[i].bd.age=3026-(tab[i].bd.année);

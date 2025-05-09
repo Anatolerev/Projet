@@ -46,15 +46,26 @@ void ajouter_animal() {
 
 
     printf("\n\nNom: ");
-    scanf(" %s", tab[nb].nom);
+    scanf(" %99s", tab[nb].nom);
     while (getchar() != '\n');
 
     tab[nb].nom[0]=toupper(tab[nb].nom[0]);
+    	
+    	for (int i = 1; tab[nb].nom[i] != '\0'; i++) {
+   		 tab[nb].nom[i] = tolower(tab[nb].nom[i]);
+	}
 
-    do {
+    do{
         printf("\n\nSelectionner son espece:\n0:VARACTYL\n1:ZILLO BEAST\n2:PORG\n3:AIWHAS\n4:BANTHA\n5:KOWAKIEN\n");
-        scanf(" %d", &tab[nb].race);
-        while (getchar() != '\n');
+        
+        	while(scanf("%d", &tab[nb].race)!=1){
+        	
+        		while (getchar() != '\n');
+        		printf("Veuillez rentrer un entier\n");
+        	}
+    
+    	while (getchar() != '\n');
+    
     }while (tab[nb].race<0 || tab[nb].race>5);
 
 
@@ -67,7 +78,7 @@ void ajouter_animal() {
     }while ( (tab[nb].bd.jour<1 || tab[nb].bd.jour>31) || (tab[nb].bd.mois<1 || tab[nb].bd.mois>12) || (tab[nb].bd.année<2876 || tab[nb].bd.année>3026) );
 
     do {
-        printf("\n\nPoids en kilogrammes:\n");
+        printf("\n\nPoids en kilogrammes:\n (Pour des raisons techniques, veuillez vous adressez a un autre refuge pour des poids supérieurs à 3 200kg)\n");
         scanf("%d", &tab[nb].poids);
         while (getchar() != '\n');
     }while (tab[nb].poids<1 || tab[nb].poids>3200);
@@ -75,7 +86,7 @@ void ajouter_animal() {
 
     int remarque;
     do {
-            printf("Avez-vous une remarque a faire sur %s?\n0:Oui\n1:Non\n", tab[nb].nom);
+            printf("\n\nAvez-vous une remarque a faire sur %s?\n0:Oui\n1:Non\n", tab[nb].nom);
             scanf("%d", &remarque);
             while (getchar() != '\n');
     }while (remarque!=0 && remarque!=1);
@@ -125,7 +136,9 @@ void ajouter_animal() {
     }
 
 fclose(doc);
-    printf("Regsitre mis a jour avec succes\n");
+    printf("\n\n\nRegsitre mis a jour avec succes\n");
+    
+   free(tab);
 
 }
 ////////////////////

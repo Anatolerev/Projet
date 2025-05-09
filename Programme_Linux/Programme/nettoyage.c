@@ -118,7 +118,7 @@ Race_compte* compter_animaux_race() {
 
 ////////////////////
 void nettoyage() {
-    FILE * cavalier=fopen("../Nettoyage/Cavalier.txt", "r");
+    FILE * cavalier=fopen("../Nettoyage/Cavalier.txt", "r");// affichage presentation cavalier
     if (cavalier==NULL) {
         printf("Erreur nettoyage: %d\n", errno);
         printf("Message d'erreur: %s\n", strerror(errno));
@@ -137,7 +137,7 @@ void nettoyage() {
 
 
 
-    FILE* fichier = fopen("../Nettoyage/donnees.txt", "r");
+    FILE* fichier = fopen("../Nettoyage/donnees.txt", "r");//ouverture des données de nettoyage
     if (fichier == NULL) {
         printf("Erreur nettoyage: %d\n", errno);
         printf("Message d'erreur: %s\n", strerror(errno));
@@ -153,7 +153,8 @@ void nettoyage() {
 
     fclose(fichier);
 
-    Race_compte *tab_count=compter_animaux_race();
+    Race_compte *tab_count=compter_animaux_race();// recupère tableau avec le compte par race
+    
     if (tab_count==NULL) {
         printf("ERREUR tab_count 'nettoyage'\n");
         exit(12365);
@@ -174,7 +175,7 @@ void nettoyage() {
             }
         }
 
-	int temps_minute=tab[i].temps * count;
+	int temps_minute=tab[i].temps * count;//temps nettoyage*nombre de betes/espece
         Temps t1=convertion_temps(temps_minute);
 
         printf("\n***\n");

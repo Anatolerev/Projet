@@ -90,16 +90,17 @@ void mando_alerte();
 
 
 
-void afficher_registre(); //nettoyage.c
-const char* race_espece(Espece race);//nettoyage.c
-void nettoyage();//nettoyage.c
-void ajouter_animal();//nettoyage.c
-Race_compte* compter_animaux_race();//nettoyage.c
-void echanger(Race_compte* a, Race_compte* b);//nettoyage.c
-int partition(Race_compte tab[], int low, int high);//nettoyage.c
-void quicksort(Race_compte tab[], int low, int high);//nettoyage.c
-Temps convertion_temps(int t);//nettoyage.c
-void adoption();//recherche.c
+void afficher_registre(); //afficher_registre.c
+void echanger(Race_compte* a, Race_compte* b);//afficher_registre.c
+int partition(Race_compte tab[], int premier, int dernier);//afficher_registre.c
+void quicksort(Race_compte tab[], int premier, int dernier);//afficher_registre.c
+
+
+
+void ajouter_animal();//ajouter.c
+
+
+void adoption();//adoption.c
 
 
 
@@ -109,8 +110,14 @@ int* rechercher_espece(Animal *tab, int taille);//recherche.c
 void compare_affiche( Animal *tab, int *tab_ID1, int *tab_ID2, int taille);//recherche.c
 void rechercher_animal();//recherche.c
 void afficher_recherche(int *search1, int *search2);//recherche.c
-void adoption();//recherche.c
 
+
+
+
+const char* race_espece(Espece race);//nettoyage.c
+Race_compte* compter_animaux_race();//nettoyage.c
+Temps convertion_temps(int t);//nettoyage.c
+void nettoyage();//nettoyage.c
 
 
 

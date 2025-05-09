@@ -1,12 +1,12 @@
 #include"Projet.h"
 
 ////////////////////
-int *rechercher_nom(Animal *tab, int taille) {
+int *rechercher_nom(Animal *tab, int taille) { //recupère tableau avec info registre
 
     char nom[100]={0};
     int *tab_ID=malloc(sizeof(int)*taille);
         if (tab_ID==NULL) {
-            printf("erreur alloc 'rechercher_age'\n");
+            printf("erreur alloc 'rechercher_nom'\n");
             exit(456);
         }
 
@@ -15,8 +15,12 @@ int *rechercher_nom(Animal *tab, int taille) {
     scanf(" %99s", nom);
 
     nom[0]=toupper(nom[0]);
+    
+    	for (int i = 1; nom[i] != '\0'; i++) {
+    		nom[i] = tolower(nom[i]);
+	}	
 
-    for (int i=0; i<taille; i++) {
+    for (int i=0; i<taille; i++) {			//insert L'ID correspondant à la recherche ou met -1
             if (strcmp(tab[i].nom, nom)==0) {
                 tab_ID[i]=tab[i].ID;
             }
@@ -24,6 +28,8 @@ int *rechercher_nom(Animal *tab, int taille) {
                 tab_ID[i]=-1;
             }
     }
+
+   
 return tab_ID;
 }
 ////////////////////
@@ -37,6 +43,7 @@ int *rechercher_age(Animal *tab, int taille) {
 
     int age=-1;
     int *tab_ID=malloc((sizeof(int)*taille));
+      
         if (tab_ID==NULL) {
             printf("Erreur 'rechercher_age'\n");
             exit(35);
@@ -51,10 +58,10 @@ int *rechercher_age(Animal *tab, int taille) {
     }
     while (age<0 || age>2);
 
-    switch (age) {
+    switch (age) {			//insert L'ID correspondant à la recherche ou met -1
         case(0):
             for (int i=0; i<taille; i++) {
-                if (tab[i].bd.age<20 && tab[i].bd.age>0) {
+                if (tab[i].bd.age<20 && tab[i].bd.age>0) { 
                     tab_ID[i]=tab[i].ID;
                 }
                 else {
@@ -87,6 +94,7 @@ int *rechercher_age(Animal *tab, int taille) {
 
         }
 
+
 return tab_ID;
 }
 ////////////////////
@@ -97,7 +105,9 @@ return tab_ID;
 
 ////////////////////
 int* rechercher_espece(Animal *tab, int taille) {
+    
     int *tab_ID=malloc((sizeof(int)*taille));
+    
     if (tab_ID==NULL) {
         printf("Erreur 'rechercher_espece'\n");
         exit(76);
@@ -113,7 +123,7 @@ int* rechercher_espece(Animal *tab, int taille) {
     }
     while (race<0 || race>5);
 
-    switch (race) {
+    switch (race) {			//affichage visuel de l'animal
         case(0):affiche_varactyl();
         sleep(1);
         break;
@@ -155,6 +165,7 @@ int* rechercher_espece(Animal *tab, int taille) {
         }
     }
 
+
     return tab_ID;
 }
 ////////////////////
@@ -166,7 +177,7 @@ int* rechercher_espece(Animal *tab, int taille) {
 ////////////////////
 void compare_affiche( Animal *tab, int *tab_ID1, int *tab_ID2, int taille) { //complexité o(n^3) mais petite valeur de taille
 
-    if (tab_ID1==NULL || tab_ID2==NULL || tab==NULL) {
+    if (tab_ID1==NULL || tab_ID2==NULL || tab==NULL) {				//recoit deux tab avec ID ou -1 et un tab avec les infos du registre
         printf("ERREUR ALLOC' compare affiche");
         exit(7);
     }
@@ -177,15 +188,15 @@ void compare_affiche( Animal *tab, int *tab_ID1, int *tab_ID2, int taille) { //c
     }
     int count=0;
 
-    for (int i=0; i<taille; i++) {
+    for (int i=0; i<taille; i++) {						
 
         for (int j=0; j<taille;j++) {
 
-            if (tab_ID1[i]==tab_ID2[j] && tab_ID1[i]!=-1) {
+            if (tab_ID1[i]==tab_ID2[j] && tab_ID1[i]!=-1) { 				//recherche les id qui sont dans les deux tableaux
 
                 int id=tab_ID1[i];
 
-                if (tab[id].ID==0 && strlen(tab[id].nom)==0) {
+                if (tab[id].ID==0 && strlen(tab[id].nom)==0) {				//passe les 'cases' du tableau vide
                     continue;
                 }
 
@@ -196,7 +207,7 @@ void compare_affiche( Animal *tab, int *tab_ID1, int *tab_ID2, int taille) { //c
 
 
 
-                    for (int k=0; k<taille; k++) {
+                    for (int k=0; k<taille; k++) {					//recherche de l'id commun au deux tableau dans les données extrait du registre dans 'tab'
 
                         if (tab[k].ID==tab_ID1[i]) {
 
@@ -233,6 +244,8 @@ void compare_affiche( Animal *tab, int *tab_ID1, int *tab_ID2, int taille) { //c
 		
 		
 	}
+	
+
 }
 ////////////////////
 
@@ -243,7 +256,7 @@ void compare_affiche( Animal *tab, int *tab_ID1, int *tab_ID2, int taille) { //c
 ////////////////////
 void afficher_recherche(int *search1, int *search2) {
 
-    FILE * accueil=fopen("../Dessin/Compte/Bonjour.txt", "r");
+    FILE * accueil=fopen("../Dessin/Compte/Bonjour.txt", "r"); 		//affiche présentation
     if (accueil==NULL) {
         printf("Erreur recherche_bonjour: %d\n", errno);
         printf("Message d'erreur: %s\n", strerror(errno));
@@ -262,7 +275,7 @@ void afficher_recherche(int *search1, int *search2) {
     sleep(2);
     printf("\n\n\n");
 
-    FILE * choix1=fopen("../Dessin/Compte/recherche.txt", "r");
+    FILE * choix1=fopen("../Dessin/Compte/recherche.txt", "r");    	//présente critère 1
     if (choix1==NULL) {
         printf("Erreur recherche_recherche: %d\n", errno);
         printf("Message d'erreur: %s\n", strerror(errno));
@@ -293,7 +306,7 @@ void afficher_recherche(int *search1, int *search2) {
     printf("\n\n\n");
 
 
-    FILE * choix2=fopen("../Dessin/Compte/recherche_2.txt", "r");
+    FILE * choix2=fopen("../Dessin/Compte/recherche_2.txt", "r");		//présente critère 2
     if (choix2==NULL) {
         printf("Erreur recherche_recherche 2: %d\n", errno);
         printf("Message d'erreur: %s\n", strerror(errno));
@@ -332,10 +345,9 @@ void afficher_recherche(int *search1, int *search2) {
 void rechercher_animal() {
     int search1=-1;
     int search2=-1;
-    //int *p1=&search1;
-    //int *p2=&search2;
+    
 
-    afficher_recherche(&search1, &search2);
+    afficher_recherche(&search1, &search2);//affiche les critères
 
     if (search1==-1 ||search2==-1) {
         printf("Erreur selection\n");
@@ -349,7 +361,7 @@ void rechercher_animal() {
     }
 
 
-    Animal *tab=registre_tab(TAILLE);
+    Animal *tab=registre_tab(TAILLE); //recupère tab avec info du registre
     if (tab==NULL) {
         printf("ERREUR regsitre tab'recherche'\n");
         exit(46565);
@@ -363,25 +375,25 @@ void rechercher_animal() {
 
     switch (search1) {
         case(0):
-            tab_ID_00=rechercher_nom(tab, TAILLE);
+            tab_ID_00=rechercher_nom(tab, TAILLE);//retourne tab avec des Id corrects ou -1
         switch(search2) {
             case(1):
-                tab_ID_01=rechercher_age(tab, TAILLE);
+                tab_ID_01=rechercher_age(tab, TAILLE); //retourne tab avec des Id corrects ou -1
             break;
 
             case(2):
-                tab_ID_01=rechercher_espece(tab, TAILLE);
+                tab_ID_01=rechercher_espece(tab, TAILLE); //retourne tab avec des Id corrects ou -1
             break;
 
-            default: tab_ID_01=tab_ID_00;
+            default: tab_ID_01=tab_ID_00; // pas de deucième critères
             p_identique=1;
             break;
         }
-        compare_affiche(tab, tab_ID_00, tab_ID_01, TAILLE);
+        compare_affiche(tab, tab_ID_00, tab_ID_01, TAILLE);//affiche les animaux correspondants
         break;
 
 
-
+								//même fonctionnement pour le reste
         case(1):
             tab_ID_00=rechercher_age(tab, TAILLE);
         switch(search2) {
