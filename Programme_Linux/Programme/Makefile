@@ -12,8 +12,18 @@ nettoyage.o : nettoyage.c Projet.h
 recherche.o : recherche.c Projet.h
 	gcc -c recherche.c -o recherche.o 
 	
-projet.exe: main.o Welcome.o nettoyage.o recherche.o
-	gcc main.o Welcome.o nettoyage.o recherche.o -o projet.exe 
+adoption.o: adoption.c Projet.h
+	gcc -c adoption.c -o adoption.o
+	
+afficher_registre.o: afficher_registre.c Projet.h
+	gcc -c afficher_registre.c -o afficher_registre.o
+	
+ajouter.o: ajouter.c Projet.h
+	gcc -c ajouter.c -o ajouter.o
+	
+projet.exe: main.o Welcome.o nettoyage.o recherche.o adoption.o afficher_registre.o ajouter.o
+	
+	gcc main.o Welcome.o nettoyage.o recherche.o adoption.o afficher_registre.o ajouter.o -o projet.exe 
 	
 clean: 
-	rm -f main.o Welcome.o nettoyage.o recherche.o projet.exe
+	rm -f main.o Welcome.o nettoyage.o recherche.o adoption.o afficher_registre.o ajouter.o projet.exe
