@@ -214,9 +214,25 @@ void compare_affiche( Animal *tab, int *tab_ID1, int *tab_ID2, int taille) { //c
         }
     }
 
-if (count==0) {
-    printf("\n\n***\nAucun animal ne correspond a ces criteres\n");
-}
+int choix;
+
+	if (count==0) {
+	    	printf("\n\n***\nAucun animal ne correspond a ces criteres\n");
+	}
+	else{
+		printf("\n\nVoulez vous adopter un de ces animaux? (Saisir 0 ou 1):\n0:Oui\n1:Non\n");
+			while(scanf("%d", &choix)!=1){
+				while(getchar() != '\n');
+				printf("Veuillez saisir une valeur correcte\n");
+			}
+			
+		if(choix==0){
+			printf("\n\n");
+			adoption();
+		}
+		
+		
+	}
 }
 ////////////////////
 

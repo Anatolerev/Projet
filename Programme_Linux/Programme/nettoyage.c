@@ -335,6 +335,22 @@ void afficher_registre() {
                 }
         }
     }
+
+int choix;
+		printf("\n\nVoulez vous adopter un de ces animaux? (Saisir 0 ou 1):\n0:Oui\n1:Non\n");
+			while(scanf("%d", &choix)!=1){
+				while(getchar() != '\n');
+				printf("Veuillez saisir une valeur correcte\n");
+			}
+			
+		if(choix==0){
+			printf("\n\n");
+			adoption();
+		}
+
+
+
+
 }
 ////////////////////
 
