@@ -106,7 +106,7 @@ void ajouter_animal() {
 
     do { //créer un nouvel ID tant que il existe déjà 
             existe=false;
-            id=rand()%51+1;
+            id=rand()%50+1;
             for (int i=0; i<TAILLE; i++) {
                 if (tab[i].ID==id) {
                     existe=true;
@@ -115,6 +115,7 @@ void ajouter_animal() {
             }
 
     }while (existe==true);
+    
 
     tab[nb].ID=id;
 

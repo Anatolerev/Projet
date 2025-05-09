@@ -272,7 +272,7 @@ void afficher_recherche(int *search1, int *search2) {
     fclose(accueil);
 
 
-    sleep(2);
+    sleep(1);
     printf("\n\n\n");
 
     FILE * choix1=fopen("../Dessin/Compte/recherche.txt", "r");    	//présente critère 1

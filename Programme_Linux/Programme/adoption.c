@@ -134,10 +134,17 @@ void adoption(){  //créer un nouveau registre en fonction de l'ID autorisé ou 
 
 		case(3):
 			printf("\n\n\n\n");
-			printf("\n***\nQuelle est votre titre ou votre nom?\n Veuilllez mettre des '_' dans les noms composés\n***\n");
-		scanf(" %s", titre);
+			while(getchar()!='\n');
+			printf("\n***\nQuelle est votre titre ou votre nom?\n");
+			fgets(titre, 50, stdin);
 
 		titre[0]=toupper(titre[0]);
+		titre[strcspn(titre, "\n")]='\0';
+		
+		for (int i = 1; titre[i] != '\0'; i++) {
+	   		 titre[i] = tolower(titre[i]);
+		}
+		 
 
 
 		if( strcmp(titre, "Yoda")==0){
@@ -148,7 +155,7 @@ void adoption(){  //créer un nouveau registre en fonction de l'ID autorisé ou 
 			rename(TEMPFILE, FILENAME);
 
 		}
-		else if(strcmp(titre, "Chasseur_de_prime")==0) {
+		else if(strcmp(titre, "Chasseur de prime")==0) {
 			if ( a2.race!=1) {
 				//demande pas zillo donc ok
 				printf("\n\n\n\n");
