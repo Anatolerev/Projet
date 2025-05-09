@@ -2,12 +2,12 @@
 
 
 ////////////////////
-void adoption(){
+void adoption(){  //créer un nouveau registre en fonction de l'ID autorisé ou pas 
 	int ID;
 	int trv=0;
 
 	printf("\n\n\n\n");
-    wando_id();
+    	wando_id(); //demande ID
 
 	do {
 	    printf("\n\nVotre demande (entier entre 0 et 50 inclus): ");
@@ -23,7 +23,7 @@ void adoption(){
 
 
 
-	FILE *fichier = fopen("../Animaux/Registre.txt","r");
+	FILE *fichier = fopen("../Animaux/Registre.txt","r"); //ouverture regitre + fichier temporaire
 	FILE *temp = fopen("../Animaux/temp.txt","w");
 	if( fichier==NULL || temp==NULL) {
 		printf("ERREUR 'adoption': %d\n", errno);
@@ -45,7 +45,7 @@ void adoption(){
 	int i=0;
 
 
-	while(fgets(line, sizeof(line),fichier)!=NULL && i<TAILLE){ // COUYILLZ
+	while(fgets(line, sizeof(line),fichier)!=NULL && i<TAILLE){ // copie du registre dans le temporaire sans Id rechercher
 		line[strcspn(line, "\r\n")]='\0';
 
 		int nb_champs=sscanf(line, "%d %99s %d %d/%d/%d %d %[^\n]", &a1.ID, a1.nom, &a1.race, &a1.bd.jour, &a1.bd.mois, &a1.bd.année, &a1.poids, remarque_temps);
@@ -76,7 +76,7 @@ void adoption(){
 	fclose(fichier);
 	fclose(temp);
 
-    printf("\n\n\n\n");
+    	printf("\n\n\n\n");
 
 	if (trv==0) {
 	    wando_id_introuvable();
@@ -94,7 +94,7 @@ void adoption(){
 	int R;
 	char titre[50];
 
-	mando_provenance();
+	mando_provenance(); //demande empire/republqiue/autres
 
 
 
@@ -110,8 +110,8 @@ void adoption(){
 	
 	switch (R) {
 		case(1):
-            mando_empire();
-		    remove(TEMPFILE);
+    			mando_empire();//refuse empire
+		    	remove(TEMPFILE);
 			return;
 		break;
 
@@ -142,7 +142,7 @@ void adoption(){
 
 		if( strcmp(titre, "Yoda")==0){
 			printf("\n\n\n\n");
-			mando_yoda();
+			mando_yoda();//si yoda accepte
 
 			remove(FILENAME);
 			rename(TEMPFILE, FILENAME);
@@ -150,7 +150,7 @@ void adoption(){
 		}
 		else if(strcmp(titre, "Chasseur_de_prime")==0) {
 			if ( a2.race!=1) {
-				//demande pas zillo ok
+				//demande pas zillo donc ok
 				printf("\n\n\n\n");
 				mando_accepte();
 

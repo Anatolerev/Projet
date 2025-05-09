@@ -4,13 +4,13 @@
 
 ////////////////////
 void ajouter_animal() {
-    watto_bonjour();
+    watto_bonjour();//affiche presentation watto
     printf("\n\n____________________________\nAppuyer deux fois sur entrer\n\n");
     getchar();
     getchar();
 
     printf("\n\n");
-    watto_espece();
+    watto_espece();// watto espece limite
     printf("\n\n____________________________\nAppuyer deux fois sur entrer\n\n");
     getchar();
     getchar();
@@ -18,7 +18,7 @@ void ajouter_animal() {
 
 
     srand(time(NULL));
-    Animal *tab=registre_tab(TAILLE);
+    Animal *tab=registre_tab(TAILLE);//renvoit tableau avec les infos du registre
     if (tab==NULL) {
         printf("ERREUR registre_tab 'ajouter_animal'\n");
         exit(12);
@@ -36,11 +36,11 @@ void ajouter_animal() {
 
 
     if (nb==-1 || nb>=50) {
-        adoption_impossible();
+        adoption_impossible();//watto trop animaux
         return;
     }
     else {
-        adoption_possible();
+        adoption_possible(); //watto info pour ajout 
     }
 
 
@@ -75,7 +75,7 @@ void ajouter_animal() {
 
     int remarque;
     do {
-            printf("Avez-vous une reamrque a faire sur %s?\n0:Oui\n1:Non\n", tab[nb].nom);
+            printf("Avez-vous une remarque a faire sur %s?\n0:Oui\n1:Non\n", tab[nb].nom);
             scanf("%d", &remarque);
             while (getchar() != '\n');
     }while (remarque!=0 && remarque!=1);
@@ -93,7 +93,7 @@ void ajouter_animal() {
     int id;
     bool existe;
 
-    do {
+    do { //créer un nouvel ID tant que il existe déjà 
             existe=false;
             id=rand()%51+1;
             for (int i=0; i<TAILLE; i++) {

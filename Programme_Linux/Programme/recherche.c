@@ -282,7 +282,7 @@ void afficher_recherche(int *search1, int *search2) {
 
         while (scanf("%d", search1)!=1) {
             while (getchar()!='\n');
-            printf("Vueuillez saisir un entier\n");
+            printf("Veuillez saisir un entier\n");
         }
 
     }

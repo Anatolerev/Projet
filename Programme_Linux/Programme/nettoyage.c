@@ -33,7 +33,7 @@ return t1;
 
 
 ////////////////////
-const char* race_espece(Espece race) {
+const char* race_espece(Espece race) { //renvoie une valeur lors entrée 'espece'
     switch (race) {
         case VARACTYL: return "VARACTYL";
         case ZILLO_BEAST: return "ZILLO_BEAST";
@@ -52,27 +52,27 @@ const char* race_espece(Espece race) {
 ////////////////////
 Race_compte* compter_animaux_race() {
 
-    Animal *tab=registre_tab(TAILLE);
+    Animal *tab=registre_tab(TAILLE);//recupère tableau avec info du registre
     if (tab==NULL) {
         printf("ERREUR tab_regsitre 'nettoyage'\n");
         exit(487);
     }
 
-    Race_compte *tab2=malloc(sizeof(Race_compte)*6);
+    Race_compte *tab2=malloc(sizeof(Race_compte)*6);// création tableau {"race", nombre}
 
     if (tab2==NULL) {
         printf("ERREUR tab2 'compter'\n");
         exit(174);
     }
 
-    strcpy(tab2[0].nom, "VARACTYL");
+    strcpy(tab2[0].nom, "VARACTYL"); //insertion nom dans tableau
     strcpy(tab2[1].nom, "ZILLO_BEAST");
     strcpy(tab2[2].nom, "PORG");
     strcpy(tab2[3].nom, "AIWHAS");
     strcpy(tab2[4].nom, "BANTHA");
     strcpy(tab2[5].nom, "KOWAKIEN");
 
-    for (int i=0; i<6; i++) {
+    for (int i=0; i<6; i++) { //initilisation des comptes à 0
         tab2[i].count=0;
     }
 

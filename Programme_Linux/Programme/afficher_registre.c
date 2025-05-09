@@ -24,9 +24,9 @@ void afficher_registre() {
     fclose(doc);
         sleep(2);
 
-//fermeture bonjour
 
-    Animal* tab=registre_tab(TAILLE);//reçoit tableau contenant les données registres
+
+    Animal* tab=registre_tab(TAILLE);//reçoit tableau contenant les données registre
     int tab_count[6]={0};
 
 
@@ -71,7 +71,7 @@ void afficher_registre() {
         {"KOWAKIEN", tab_count[5]}
     };
 
-    quicksort(tab_race, 0, 5);
+    quicksort(tab_race, 0, 5); // trie des données en décroissant
 
     printf("\n\n\nVoici les comptes:\n");
     for (int i = 0; i < 6; i++) {
